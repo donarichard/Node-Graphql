@@ -1,0 +1,30 @@
+    scalar _Any
+	scalar _FieldSet 
+	directive @external on FIELD_DEFINITION
+	directive @requires(fields: _FieldSet!) on FIELD_DEFINITION
+	directive @provides(fields: _FieldSet!) on FIELD_DEFINITION
+	directive @key(fields: _FieldSet!) on OBJECT | INTERFACE
+	directive @live on QUERY
+	directive @deprecated(
+    reason: String = "No longer supported"
+    ) on FIELD_DEFINITION | ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION | ENUM_VALUE
+	# this is an optional directive discussed below
+	directive @extends on OBJECT | INTERFACE
+	enum CacheControlScope {
+    PUBLIC
+    PRIVATE
+    }
+
+    directive @cacheControl(
+    maxAge: Int
+    scope: CacheControlScope
+    inheritMaxAge: Boolean
+    ) on FIELD_DEFINITION | OBJECT | INTERFACE | UNION
+	type Pagination{
+		offset:Int!
+		limit:Int!
+		total:Int!
+	}
+	scalar BigInt
+	scalar Date
+	scalar Json

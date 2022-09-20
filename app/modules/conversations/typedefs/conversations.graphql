@@ -1,0 +1,51 @@
+
+
+type Conversation @cacheControl(maxAge: 240) @key(fields: "_id") {
+    _id: _Any
+    messages(offset:Int! limit:Int!):Messages @cacheControl(maxAge: 240)
+    memeber:[User]
+    un_read_messages: Int 
+    createdAt: Date @deprecated
+    updatedAt: Date
+}
+
+extend type User @key(fields: "id") {
+	_id: _Any! @external
+}
+
+extend type Message @key(fields: "id") {
+	_id: _Any! @external
+}
+
+type Conversations{
+    pagination: Pagination
+	conversations: [Conversation]
+}
+
+type Messages{
+    pagination: Pagination
+	messages: [Message]
+}
+
+type Query {
+    # To get list of conversation for the current user
+    myconversation(offset:Int! limit:Int!) : Conversations
+    openConversation(conversatin_id:_Any!) :Conversation
+    openConversationByUserId(user_id:_Any!) :Conversation
+}
+
+type Subscription {
+    myconversation(offset:Int! limit:Int!) : Conversations
+    openConversation(conversatin_id:_Any!) : Conversation
+}
+
+type MarkAsReadMutationResponse {
+     status:Int!
+     StatusCode:String!
+     message:String!
+}
+
+
+type  Mutation {
+     markAsReadConversion(conversatin_id: _Any!): MarkAsReadMutationResponse!
+}

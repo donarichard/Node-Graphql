@@ -1,0 +1,28 @@
+definitions:
+  add: &top-comment
+    content: >
+      /**
+       * NOTE: THIS IS AN AUTO-GENERATED FILE. DO NOT MODIFY IT DIRECTLY.
+       */
+  scalars: &scalars
+    Date: Date
+    BigInt: bigint
+    Json: '{ [key: string]: any }'
+  namingConvention: &namingConvention
+    enumValues: change-case#upperCase
+overwrite: true
+schema: 
+      - 'app/**/*.graphql'
+      - federation-directives.graphql
+config:
+  defaultMapper: any
+  scalars: *scalars
+  namingConvention: *namingConvention
+  maybeValue: T | undefined
+generates:
+  app/generate/typedef.ts:
+    plugins:
+      - add: *top-comment
+      - "typescript"
+      - "typescript-resolvers"
+

@@ -1,0 +1,83 @@
+type User @key(fields: "_id") {
+    _id: _Any
+    name: String
+    username: String
+    email:String
+    role:String
+    login_at: Date
+    last_ip:String
+    last_seen: Date
+    available: Boolean
+    # followers: [User]
+    # following: [User]
+    location: [Int]
+    createdAt: Date
+    updatedAt: Date
+    conversation : Conversation
+}
+
+extend type Conversation @key(fields: "id") {
+	_id: _Any! @external
+}
+
+enum StatusCode {
+  Ok 
+  Created
+  Conflict  
+  Bad_Request
+  Unauthorized 
+  Forbidden 
+  Not_Found
+  Internal_Error
+}
+
+
+type Query {
+    me: User 
+    getAllUsers(offset:Int! limit:Int!):Users
+}
+
+type Users{
+    pagination: Pagination
+	users: [User]
+}
+
+
+ type Error {
+     message: String!
+     field: String!
+}
+type RegisterMutationResponse {
+     status:Int!
+     StatusCode:String!
+     message:String!
+     user: User
+     token: String!
+     errors: [Error!]
+}
+ input newUser {
+     name: String!
+     username: String!
+     email: String!
+     password: String!
+}
+
+type LoginMutationResponse {
+     status:Int!
+     StatusCode:String!
+     message:String!
+     user: User
+     token: String!
+     errors: [Error!]
+}
+ input loginUserInput {
+     email: String!
+     password: String!
+}
+
+type Mutation {
+     register(input: newUser!): RegisterMutationResponse!
+     login(input: loginUserInput!): LoginMutationResponse!
+ }
+
+

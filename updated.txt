@@ -1,0 +1,93 @@
+ @apollo/federation                                  0.16.8  →   0.36.1
+ @apollo/gateway                                    ^0.13.2  →   ^2.0.5
+ @graphql-codegen/add                                1.15.4  →    3.2.0
+ @graphql-codegen/cli                                1.15.4  →    2.8.1
+ @graphql-codegen/typescript                         1.15.4  →    2.7.1
+ @graphql-codegen/typescript-graphql-files-modules   1.15.4  →    2.2.0
+ @graphql-codegen/typescript-graphql-request         1.15.4  →    4.5.1
+ @graphql-codegen/typescript-operations              1.15.4  →    2.5.1
+ @graphql-codegen/typescript-react-apollo            1.15.4  →    3.3.1
+ @graphql-codegen/typescript-resolvers               1.15.4  →    2.7.1
+ apollo                                              2.18.3  →   2.34.0
+ apollo-graphql                                       0.4.1  →    0.9.7
+ apollo-server-core                                 ^2.25.4  →  ^3.10.0
+ graphql                                             14.7.0  →   16.5.0
+ graphql-middleware                                   4.0.2  →   6.1.31
+ typescript                                           4.2.4  →    4.7.4
+
+
+
+ {
+  "name": "node-graphql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec ts-node app/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate": "graphql-codegen --config codegen.yml",
+    "clean": "tsc -b --clean",
+    "clean:build": "del-cli --force ./dist",
+    "build:server": "tsc --project tsconfig.build.json",
+    "copy:grarphql": "cpx \"app/**/*.graphql\" \"dist/app\"",
+    "start": "node dist/app/index.js",
+    "lint": "eslint . --ext .ts",
+    "dev-local": "npm run clean:build && npm run clean && npm run build:server && npm run copy:grarphql && npm start",
+    "app": "nodemon -L --watch app"
+  },
+  "author": "dona richard",
+  "license": "ISC",
+  "dependencies": {
+    "@graphql-codegen/add": "1.15.4",
+    "@graphql-codegen/cli": "1.15.4",
+    "@graphql-codegen/typescript": "1.15.4 ",
+    "@graphql-codegen/typescript-graphql-files-modules": "1.15.4",
+    "@graphql-codegen/typescript-graphql-request": "1.15.4",
+    "@graphql-codegen/typescript-operations": "1.15.4  ",
+    "@graphql-codegen/typescript-react-apollo": "1.15.4 ",
+    "@graphql-codegen/typescript-resolvers": "1.15.4 ",
+    "@graphql-toolkit/file-loading": "^0.10.7",
+    "@graphql-tools/schema": "^8.5.0",
+    "@types/cryptr": "^4.0.1",
+    "@types/graphql-upload": "^8.0.11",
+    "@types/lodash": "^4.14.182",
+    "@typescript-eslint/eslint-plugin": "^5.30.7",
+    "apollo": "2.18.3",
+    "apollo-graphql": "0.4.1",
+    "apollo-log": "^1.1.0",
+    "apollo-server": "^3.10.0",
+    "apollo-server-core": "^3.6.4",
+    "apollo-server-express": "^3.10.0",
+    "cluster": "^0.7.7",
+    "cpx": "^1.5.0",
+    "cryptr": "^6.0.3",
+    "del-cli": "^4.0.1",
+    "dotenv": "^16.0.1",
+    "eslint": "^8.20.0",
+    "express": "^4.18.1",
+    "graphql": "15.7.0",
+    "graphql-import": "^1.0.2",
+    "graphql-middleware": "4.0.2 ",
+    "graphql-modules": "^2.1.0",
+    "graphql-subscriptions": "^2.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "log4js": "^6.6.0",
+    "merge-graphql-schemas": "^1.7.8",
+    "mongoose": "^6.4.4",
+    "nodemon": "^2.0.19",
+    "os": "^0.1.2",
+    "subscriptions-transport-ws": "^0.11.0",
+    "typescript": "4.2.4"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "2.8.1",
+    "@graphql-codegen/introspection": "2.2.0",
+    "@graphql-codegen/typescript": "2.7.1",
+    "@graphql-codegen/typescript-document-nodes": "2.3.1",
+    "@graphql-codegen/typescript-mongodb": "2.4.1",
+    "@graphql-codegen/typescript-resolvers": "2.7.1",
+    "ts-node": "^10.9.1",
+    "typescript": "4.2.4"
+  }
+}

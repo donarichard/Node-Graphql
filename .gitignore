@@ -1,0 +1,8 @@
+node_modules
+dist-server
+package-lock.json
+.env
+npm-debug.log
+logs/*
+mongodb
+db

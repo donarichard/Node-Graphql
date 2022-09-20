@@ -1,0 +1,35 @@
+
+
+type Message @key(fields: "_id") {
+    _id: _Any
+    conversation_id: _Any
+    author_id:User
+    seenByReceiver: Boolean
+    content:String
+    conversation:Conversation
+    createdAt: Date
+    updatedAt: Date
+}
+
+extend type User @key(fields: "id") {
+	_id: _Any! @external
+}
+
+extend type Conversation @key(fields: "id") {
+	_id: _Any! @external
+}
+
+ input NewMessageInput {
+     userId: _Any!
+     content: String!
+}
+type CreateMessageMutationResponse {
+     status:Int!
+     StatusCode:String!
+     message:String!
+     conversation: Conversation
+}
+
+type  Mutation {
+     createMessage(input: NewMessageInput!): CreateMessageMutationResponse!
+}
