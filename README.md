@@ -112,3 +112,27 @@ You can try this tool live on your browser and see some useful examples. Check o
 
 We currently support and maintain [these plugins](https://graphql-code-generator.com/plugins) (TypeScript, Flow, React, Angular, MongoDB, Stencil, Reason, and some more), and there is an active community that writes and maintains custom plugins.
 
+## Docker
+
+Why Docker
+"With Docker, developers can build any app in any language using any toolchain. “Dockerized” apps are completely portable and can run anywhere - colleagues’ OS X and Windows laptops, QA servers running Ubuntu in the cloud, and production data center VMs running Red Hat.
+
+Developers can get going quickly by starting with one of the 13,000+ apps available on Docker Hub. Docker manages and tracks changes and dependencies, making it easier for sysadmins to understand how the apps that developers build work. And with Docker Hub, developers can automate their build pipeline and share artifacts with collaborators through public or private repositories.
+
+Docker helps developers build and ship higher-quality applications, faster." -- What is Docker
+
+
+## Running the docker project
+
+    $ docker compose up
+
+
+
+## List docker process
+
+    $ docker ps
+
+
+## List docker container
+
+    $ docker container ls
